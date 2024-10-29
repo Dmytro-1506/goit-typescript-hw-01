@@ -26,11 +26,11 @@ enum Size {
 
 let menuSize: Size = Size.medium;
 
-type Car = {
-    color: string;
-    power: number;
-    price: number;
-    inSale: boolean;
+interface Car {
+    color: string,
+    power: number,
+    price: number,
+    inSale: boolean,
 }
 
 const BMW: Car = {
@@ -40,3 +40,27 @@ const BMW: Car = {
     inSale: true,
 }
 
+// ---array of objects---
+let users: User[] = [
+    { name: 'Tom', age: 30 },
+    { name: 'Jack', age: 25 },
+    { name: 'Alice', age: 32 },
+];
+
+
+function fetchUserData(id: string, callback: (data: any) => void): void {
+  // Тут може бути якийсь запит, але ми його заповнимо самі
+  const responseData = { name: 'Tom' };
+
+  callback(responseData);
+}
+
+// Використання функції:
+fetchUserData('123', (data) => {
+  console.log(data.name); // TypeScript не викличе помилку, навіть якщо поле name не існує
+});
+
+// let tupleType: [string, boolean];
+// tupleType = ['hello', true]; // OK
+// tupleType = [true, 'hello']; // Error. Неправильні типи
+// tupleType = ['hello', true, true]; // Error. Більше значень ніж у tuple
