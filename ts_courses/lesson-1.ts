@@ -64,3 +64,16 @@ fetchUserData('123', (data) => {
 // tupleType = ['hello', true]; // OK
 // tupleType = [true, 'hello']; // Error. Неправильні типи
 // tupleType = ['hello', true, true]; // Error. Більше значень ніж у tuple
+
+// -----union type----
+ type Dog = { 
+  legs: 4;
+  bark: () => void;
+}
+
+type Fish = {
+  fins: 2;
+  swim: () => void;
+}
+
+let pet: Dog | Fish;
