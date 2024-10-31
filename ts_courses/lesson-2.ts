@@ -133,3 +133,47 @@ if (input3) {
 }
 //Однак, коли використовується JSX (React), тільки оператор as можна використати, оскільки синтаксис <Type> може бути неправильно інтерпретований як JSX.
 
+// ---- index type ------
+
+type Item = {
+  [key: string]: number | string;
+}
+
+const userInfo: Item = {
+  name: 'John',
+  age: 22,
+  country: 'Ukraine',
+};
+
+const bookDetails: Item = {
+  title: 'Bible',
+  pageCount: 660,
+}
+
+// ------ Generics -------
+
+function revers<T>(items: T[]): T[] {
+  return items.reverse();
+}
+
+let numbers2 = revers<number>([1, 2, 3, 4, 5]);
+console.log(numbers2); // [5,4,3,2,1]
+
+let strings2 = revers<string>(['q', 'w', 'e', 'r', 't']);
+console.log(strings2); // ['t','r','e','w','q']
+
+
+const student = {
+  name: 'John',
+  age: '24',
+};
+
+function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
+  return obj[key];
+}
+
+let studentName = getProperty(student, 'name');
+console.log(studentName); // 'John'
+
+// let studentAddress = getProperty(student, 'address');
+// console.log(studentAddress); // undefinde
