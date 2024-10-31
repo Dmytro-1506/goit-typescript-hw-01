@@ -115,3 +115,21 @@ function throwError(message: string): never {
 function infiniteLoop(): never {
   while (true) {}
 }
+
+// ----- Type Casting -----
+
+const input1 = <HTMLInputElement>document.getElementById('inputEmail');
+
+input1.value = 'test@test.ts';
+
+const input2 = document.getElementById('inputEmail') as HTMLInputElement;
+
+input2.value = 'test@test.ts';
+
+const input3 = document.getElementById('inputEmail');
+
+if (input3) {
+  (input3 as HTMLInputElement).value = 'test@test.ts';
+}
+//Однак, коли використовується JSX (React), тільки оператор as можна використати, оскільки синтаксис <Type> може бути неправильно інтерпретований як JSX.
+
